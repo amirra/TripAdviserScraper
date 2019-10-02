@@ -1,0 +1,14 @@
+D:\Amir\Files\TripAdviserScraper\TripAdviserScraper\bin\Debug\TripAdviserScraper.exe.config
+D:\Amir\Files\TripAdviserScraper\TripAdviserScraper\bin\Debug\TripAdviserScraper.exe
+D:\Amir\Files\TripAdviserScraper\TripAdviserScraper\bin\Debug\TripAdviserScraper.pdb
+D:\Amir\Files\TripAdviserScraper\TripAdviserScraper\bin\Debug\EntityFramework.dll
+D:\Amir\Files\TripAdviserScraper\TripAdviserScraper\bin\Debug\EntityFramework.SqlServer.dll
+D:\Amir\Files\TripAdviserScraper\TripAdviserScraper\bin\Debug\HtmlAgilityPack.dll
+D:\Amir\Files\TripAdviserScraper\TripAdviserScraper\bin\Debug\EntityFramework.xml
+D:\Amir\Files\TripAdviserScraper\TripAdviserScraper\bin\Debug\EntityFramework.SqlServer.xml
+D:\Amir\Files\TripAdviserScraper\TripAdviserScraper\bin\Debug\HtmlAgilityPack.pdb
+D:\Amir\Files\TripAdviserScraper\TripAdviserScraper\bin\Debug\HtmlAgilityPack.xml
+D:\Amir\Files\TripAdviserScraper\TripAdviserScraper\obj\Debug\TripAdviserScraper.csproj.CoreCompileInputs.cache
+D:\Amir\Files\TripAdviserScraper\TripAdviserScraper\obj\Debug\TripAdviserScraper.csproj.CopyComplete
+D:\Amir\Files\TripAdviserScraper\TripAdviserScraper\obj\Debug\TripAdviserScraper.exe
+D:\Amir\Files\TripAdviserScraper\TripAdviserScraper\obj\Debug\TripAdviserScraper.pdb

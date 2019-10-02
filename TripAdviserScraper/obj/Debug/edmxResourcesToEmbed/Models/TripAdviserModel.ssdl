@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TripAdviserModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Address">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LinkAddress" Type="varchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="Location">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="200" />
+    <Property Name="CityTitle" Type="varchar" MaxLength="50" />
+    <Property Name="Rank" Type="int" />
+    <Property Name="LocationRef" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="LocationComment">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" Nullable="false" />
+    <Property Name="Title_Original" Type="varchar" MaxLength="200" />
+    <Property Name="Description_Original" Type="nvarchar(max)" />
+    <Property Name="Title" Type="varchar" MaxLength="200" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="LocationRef" Type="bigint" />
+  </EntityType>
+  <EntityType Name="LocationImage">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Address" Type="varchar" MaxLength="400" />
+    <Property Name="Name" Type="varchar" MaxLength="100" />
+    <Property Name="LocationRef" Type="bigint" />
+  </EntityType>
+  <Association Name="FK_LocationComment_Location">
+    <End Role="Location" Type="Self.Location" Multiplicity="0..1" />
+    <End Role="LocationComment" Type="Self.LocationComment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="LocationComment">
+        <PropertyRef Name="LocationRef" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TripLocationImage_TripLocation">
+    <End Role="Location" Type="Self.Location" Multiplicity="0..1" />
+    <End Role="LocationImage" Type="Self.LocationImage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="LocationImage">
+        <PropertyRef Name="LocationRef" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TripAdviserModelStoreContainer">
+    <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Location" EntityType="Self.Location" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LocationComment" EntityType="Self.LocationComment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LocationImage" EntityType="Self.LocationImage" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_LocationComment_Location" Association="Self.FK_LocationComment_Location">
+      <End Role="Location" EntitySet="Location" />
+      <End Role="LocationComment" EntitySet="LocationComment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TripLocationImage_TripLocation" Association="Self.FK_TripLocationImage_TripLocation">
+      <End Role="Location" EntitySet="Location" />
+      <End Role="LocationImage" EntitySet="LocationImage" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

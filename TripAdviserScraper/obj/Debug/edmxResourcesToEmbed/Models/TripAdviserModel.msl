@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TripAdviserModelStoreContainer" CdmEntityContainer="TripAdviserEntities">
+    <EntitySetMapping Name="Addresses">
+      <EntityTypeMapping TypeName="TripAdviserModel.Address">
+        <MappingFragment StoreEntitySet="Address">
+          <ScalarProperty Name="LinkAddress" ColumnName="LinkAddress" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Locations">
+      <EntityTypeMapping TypeName="TripAdviserModel.Location">
+        <MappingFragment StoreEntitySet="Location">
+          <ScalarProperty Name="LocationRef" ColumnName="LocationRef" />
+          <ScalarProperty Name="Rank" ColumnName="Rank" />
+          <ScalarProperty Name="CityTitle" ColumnName="CityTitle" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LocationComments">
+      <EntityTypeMapping TypeName="TripAdviserModel.LocationComment">
+        <MappingFragment StoreEntitySet="LocationComment">
+          <ScalarProperty Name="LocationRef" ColumnName="LocationRef" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description_Original" ColumnName="Description_Original" />
+          <ScalarProperty Name="Title_Original" ColumnName="Title_Original" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LocationImages">
+      <EntityTypeMapping TypeName="TripAdviserModel.LocationImage">
+        <MappingFragment StoreEntitySet="LocationImage">
+          <ScalarProperty Name="LocationRef" ColumnName="LocationRef" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

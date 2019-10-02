@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TripAdviserModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="TripAdviserEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Addresses" EntityType="TripAdviserModel.Address" />
+    <EntitySet Name="Locations" EntityType="TripAdviserModel.Location" />
+    <EntitySet Name="LocationComments" EntityType="TripAdviserModel.LocationComment" />
+    <EntitySet Name="LocationImages" EntityType="TripAdviserModel.LocationImage" />
+    <AssociationSet Name="FK_LocationComment_Location" Association="TripAdviserModel.FK_LocationComment_Location">
+      <End Role="Location" EntitySet="Locations" />
+      <End Role="LocationComment" EntitySet="LocationComments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TripLocationImage_TripLocation" Association="TripAdviserModel.FK_TripLocationImage_TripLocation">
+      <End Role="Location" EntitySet="Locations" />
+      <End Role="LocationImage" EntitySet="LocationImages" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Address">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LinkAddress" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Location">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="CityTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Rank" Type="Int32" />
+    <Property Name="LocationRef" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="LocationComments" Relationship="TripAdviserModel.FK_LocationComment_Location" FromRole="Location" ToRole="LocationComment" />
+    <NavigationProperty Name="LocationImages" Relationship="TripAdviserModel.FK_TripLocationImage_TripLocation" FromRole="Location" ToRole="LocationImage" />
+  </EntityType>
+  <EntityType Name="LocationComment">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" />
+    <Property Name="Title_Original" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Description_Original" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="LocationRef" Type="Int64" />
+    <NavigationProperty Name="Location" Relationship="TripAdviserModel.FK_LocationComment_Location" FromRole="LocationComment" ToRole="Location" />
+  </EntityType>
+  <EntityType Name="LocationImage">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Address" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="LocationRef" Type="Int64" />
+    <NavigationProperty Name="Location" Relationship="TripAdviserModel.FK_TripLocationImage_TripLocation" FromRole="LocationImage" ToRole="Location" />
+  </EntityType>
+  <Association Name="FK_LocationComment_Location">
+    <End Type="TripAdviserModel.Location" Role="Location" Multiplicity="0..1" />
+    <End Type="TripAdviserModel.LocationComment" Role="LocationComment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="LocationComment">
+        <PropertyRef Name="LocationRef" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TripLocationImage_TripLocation">
+    <End Type="TripAdviserModel.Location" Role="Location" Multiplicity="0..1" />
+    <End Type="TripAdviserModel.LocationImage" Role="LocationImage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="LocationImage">
+        <PropertyRef Name="LocationRef" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
